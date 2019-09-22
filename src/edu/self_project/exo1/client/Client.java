@@ -2,8 +2,6 @@ package edu.self_project.exo1.client;
 
 import edu.self_project.exo1.Constants;
 import edu.self_project.exo1.communication.Communication;
-import edu.self_project.exo1.communication.ERequestType;
-import edu.self_project.exo1.communication.ETarget;
 import edu.self_project.exo1.server.model.Entities.Student;
 
 import java.io.IOException;
@@ -22,7 +20,7 @@ public class Client {
         port = Constants.PORT;
     }
 
-    public Object request(Communication request) {
+    public Communication request(Communication request) {
         try (
                 Socket socket = new Socket(host, port);
                 ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -32,12 +30,12 @@ public class Client {
             oos.writeObject(request);
             oos.flush();
 
-            Communication response = (Communication) ois.readObject();
-            if (response != null) {
-                for (Student student : (List<Student>) response.getContent()){
-                    System.out.println(student.getName());
-                }
-            }
+            //            if (response != null) {
+//                for (Student student : (List<Student>) response.getContent()){
+//                    System.out.println(student.getName());
+//                }
+//            }
+            return (Communication) ois.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
