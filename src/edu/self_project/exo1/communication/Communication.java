@@ -6,31 +6,33 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Communication implements Serializable {
-    private String type;
-    private Target target;
+    private ERequestType type;
+    private ETarget target;
     private Object content;
     private Boolean success;
 
-    public Communication(String type, Target target, Object content, Boolean success) {
+    public Communication() {}
+
+    public Communication(ERequestType type, ETarget target, Object content, Boolean success) {
         this.type = type;
         this.target = target;
         this.content = content;
         this.success = success;
     }
 
-    public String getType() {
+    public ERequestType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ERequestType type) {
         this.type = type;
     }
 
-    public Target getTarget() {
+    public ETarget getTarget() {
         return target;
     }
 
-    public void setTarget(Target target) {
+    public void setTarget(ETarget target) {
         this.target = target;
     }
 
@@ -59,8 +61,8 @@ public class Communication implements Serializable {
     }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        type = (String) in.readObject();
-        target = (Target) in.readObject();
+        type = (ERequestType) in.readObject();
+        target = (ETarget) in.readObject();
         content = in.readObject();
         success = in.readBoolean();
     }

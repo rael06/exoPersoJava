@@ -10,7 +10,6 @@ public class Server {
     public static void main(String[] args) {
         do {
             try (ServerSocket serverSocket = new ServerSocket(Constants.PORT)) {
-                System.out.println("en attente de connexion");
                 Socket socket = serverSocket.accept();
                 Thread thread = new Thread(new Service(socket));
                 thread.start();
