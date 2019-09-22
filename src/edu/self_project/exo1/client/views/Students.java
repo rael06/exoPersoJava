@@ -19,11 +19,11 @@ public class Students extends JFrame implements ListSelectionListener, ActionLis
     private List<Student> students;
 
     private JFrame window = new JFrame();
-    JList<String> names;
-    JScrollPane namesList;
-    JLabel select;
-    JTextArea selected;
-    JButton test;
+    private JList<String> names;
+    private JScrollPane namesList;
+    private JLabel select;
+    private JTextArea selected;
+    private JButton test;
 
     public Students() {
         setStudents();
